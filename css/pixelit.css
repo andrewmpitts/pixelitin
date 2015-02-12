@@ -1,0 +1,178 @@
+body {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+}
+
+h1 {
+	position: relative;
+	color: white;
+	top: -8px;
+	left: 5px;
+	font-family: helvetica;
+	font-size: 1em;
+	padding: 1px;
+	display: inline-block;
+}
+
+.darkener{
+	position: fixed;
+	left: 0%;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: .9;
+	z-index: 3;
+	display: hidden;
+}
+
+.toolbar{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	/* right: 50px; */
+	width: 100%;
+	height: 20px;
+	background-color: blue;
+	margin: auto;
+	padding: 10px;
+	display: inline;
+	color: white;
+}
+
+.currentColorsHolder{
+	position: fixed;
+	top: 600px;
+	left: 10px;
+}
+
+.toolbarMenuDropdownButton{
+	position: relative;
+	font-family: arial;
+	font-size: 1.1em;
+	color: white;
+	top: 0px;
+}
+
+.rightMenuContainer{
+	position: fixed;
+	top: 500px;
+	left: 0px;
+}
+
+#menuButtonHolder{
+	position: relative;
+	padding: 1px;
+	top: -8px;
+	left: 25px;
+}
+
+#sizeMenuDropdownButton{
+	left: 75px;
+	
+}
+
+#promptHolder{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -200px;
+
+}
+
+#sizePrompt{
+	position: relative;
+	width: 400px;
+	height: 400px;
+	margin: auto;
+	background-color: white;
+	border:1px solid black;
+	z-index: 4;
+}
+
+
+
+#colorCanvas{
+	position: fixed;
+	top: 50px;
+	left: 10px;
+	/* top: 100px; */
+	z-index: 2;
+	
+}
+
+#currentColors{
+	position: fixed;
+	top: 360px;
+	left: 10px;
+	z-index: 2;
+}
+
+#colorSwatchesCanvas{
+	position: relative;
+	left: 1400px;
+	top: 100px;
+}
+
+
+#pixelit{
+	position: absolute;
+	left: 25px;
+	right: 25px;
+	top: 50px;
+	display: block;
+	margin: 0 auto;
+	/* width: 85%; */
+	/* height: 50%; */
+	-webkit-user-select: none;     
+    -moz-user-select: none;
+}
+
+#pixelitgrid{
+	position: absolute;
+	top: 50px;
+	left: 25px;
+	right: 25px;
+	display: block;
+	opacity: 0.05;
+	margin: 0 auto;
+	z-index: 2;
+	-webkit-user-select: none;     
+    -moz-user-select: none;
+}
+
+#sizeContainer
+{
+	position: absolute;
+	left: 200px;
+	top: 0px;
+}
+
+.box {
+	position: absolute;
+	top: 12.5%;
+	left: 12.5%;
+	width: 75%;
+	height: 75%;
+	background-color: blue;
+}
+
+#loginHolder{
+	position: absolute;
+	/* top: 50px; */
+	left: 1300px;
+	/* margin: auto; */
+}
+
+#canvaSizeHolder{
+	position: relative;
+
+}
+
+#pixelSizeHolder{
+	position: relative;
+}

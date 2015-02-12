@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pixelit.in</title>
+	<link rel="stylesheet" type="text/css" href="css/pixelit.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="script/pixelscript.js"></script>
+</head>
+
+
+<body>
+
+<!-- Drawing Canvas -->
+<div id = 'toolbar' class = 'toolbar'>
+	<h1>Pixelit.in</h1>
+	<span id = 'menuButtonHolder'>
+		<!-- <div id = 'sizeMenuDropdownButton' class = 'toolbarMenuDropdownButton'>size</div> -->
+		<span id = 'canvaSizeHolder'>
+			Size
+			<button id = '50%Size' onclick = 'changeCanvasSizePercent(.5,.6)'>Small</button>
+			<button id = '50%Size' onclick = 'changeCanvasSizePercent(.65,.75)'>Medium</button>
+			<button id = '75%Size' onclick = 'changeCanvasSizePercent(.75,.85)'>Large</button>
+		</span>
+	|
+	Pixel Size
+	<span id = 'pixelSizeHolder'>
+		<button id = '2Pixel' onclick = 'drawGrid(2)'>2</button>
+		<button id = '4Pixel' onclick = 'drawGrid(4)'>4</button>
+		<button id = '8Pixel' onclick = 'drawGrid(8)'>8</button>
+		<button id = '16Pixel' onclick = 'drawGrid(16)'>16</button>
+		<button id = '32Pixel' onclick = 'drawGrid(32)'>32</button>
+		<button id = '64Pixel' onclick = "drawGrid(64)">64</button>
+		<button id = '128Pixel' onclick = 'drawGrid(128)'>128</button>
+	</span>
+	|
+	<span id = 'gridToggleHolder'>
+		<button id = 'toggleGrid' onclick = 'toggleGrid()'>Toggle Grid</button>
+		<button id = 'createJPG' onclick = 'createPNG()'>Create PNG</button>
+		<button id = 'eraseCanvas' onclick = 'eraseCanvas()'>Erase Canvas</button>
+	</span>
+	</span>
+
+</div>
+
+
+
+<canvas id="pixelit" style= "border:2px solid black"></canvas>
+
+<!-- Drawing Grid Overlay -->
+<canvas id="pixelitgrid" oncontextmenu="return false" style= "border:2px solid black"></canvas>
+
+<canvas id="colorCanvas" oncontextmenu="return false"  width = '25' height = '300' style= "border:2px solid black"></canvas>
+
+<canvas id="currentColors" oncontextmenu="return false"  width = '25' height = '50' style= "border:2px solid black"></canvas>
+<!-- Color Selection -->
+
+
+<!-- Current Color Selections -->
+<!-- <div class = "rightMenuContainer"> -->
+
+
+<div id= "sizeContainer"></br>
+
+	
+	
+
+</div>
+
+</body>
+
+</html>
