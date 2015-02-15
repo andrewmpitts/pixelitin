@@ -5,7 +5,7 @@ var browserWidth = $(window).width();
 var browserHeight = $(window).height();
 var width = browserWidth;
 var height = browserHeight;
-var pixelSize = 16;
+var pixelSize = 8;
 var xRes = width / pixelSize;
 var yRes = height / pixelSize;
 var paintColor = 'black';
@@ -13,6 +13,7 @@ var paintColor2 = 'white';
 var grid = true;
 var canvas = document.getElementById("pixelit");
 var gridCanvas = document.getElementById("pixelitgrid");
+var dropMenuActive = false;
 var colorList = [
     ['black', 'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'brown', 'Chartreuse', 'DarkGreen', 'DeepPink', 'white'],
     ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#FFFFFF', '#FFFFFF'],
@@ -28,6 +29,26 @@ var colorList = [
 // document.write(width);
 // document.write(' x ');
 // document.write(height);
+
+var menus = ['sizeDropMenu','pixelDropMenu'];
+
+function toggleDropMenu(selectedMenu) {
+    for (menu in menus) {
+        if (menus[menu] != selectedMenu) {
+            document.getElementById(menus[menu]).style.display = "none";
+        }
+    }
+    if (dropMenuActive == false) {
+        document.getElementById(selectedMenu).style.display = "inline-block";
+        dropMenuActive = true;
+        }
+    else {
+        document.getElementById(selectedMenu).style.display = "none";
+        dropMenuActive = false;
+    }
+
+}
+
 
 function changeColor(evt) {
     var mousePos = getMousePos(colorCanvas, evt);
