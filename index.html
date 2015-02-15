@@ -10,45 +10,40 @@
 <body>
 
 <div id = 'topBar' class = 'topBar'>
-	<h1 id = 'title'>Pixelit.in</h1>
+	<h1 id = 'title'>pixelit.in</h1>
 	<span id = 'menuButtonHolder'>
-		<span id = 'canvaSizeHolder'>	
-			<span id = 'canvasMenu' onclick = 'toggleDropMenu("sizeDropMenu")'>canvas</span>
-		</span>
-		<span id = 'pixelSizeHolder'>
-			<span id="pixelSize" onclick = 'toggleDropMenu("pixelDropMenu")'>pixels</span>
-		</span>
-		<span id = 'gridToggleHolder'>
-			<button id = 'createJPG' onclick = 'createPNG()'>Create PNG</button>
-			<button id = 'eraseCanvas' onclick = 'eraseCanvas()'>Erase Canvas</button>
-			<span>show grid</span>
-			<INPUT id = 'toggleGrid' type=checkbox name="gridBox" onchange="toggleGrid()" checked = 'yes'>
-		</span>
-	
-		
-
+			<span id = 'canvasMenu' class = 'menuSelector' onclick = 'toggleDropMenu("sizeDropMenu")'>canvas</span>
+			<span id="pixelSize" class = 'menuSelector'  onclick = 'toggleDropMenu("pixelDropMenu")'>pixels</span>		
+			<span id="pixelSize" class = 'menuSelector'  onclick = 'toggleDropMenu("exportDropMenu")'>export</span>
 	</span>
-
-
 </div>
-		<div id = 'sizeDropMenu' class = 'dropMenu'>
 
-			<div id = '50%Size' onclick = 'changeCanvasSizePercent(.5,.6)'>Small</div>
-			<div id = '50%Size' onclick = 'changeCanvasSizePercent(.65,.75)'>Medium</div>
-			<div id = '75%Size' onclick = 'changeCanvasSizePercent(.75,.85)'>Large</div>
-		
-		</div>	
+<div id = 'sizeDropMenu' class = 'dropMenu'>
+	<div id = '50%Size' class = 'dropMenuSelector' onclick = 'changeCanvasSizePercent(.5,.6)'>small</div>
+	<div id = '50%Size' class = 'dropMenuSelector' onclick = 'changeCanvasSizePercent(.65,.75)'>medium</div>
+	<div id = '75%Size' class = 'dropMenuSelector'  onclick = 'changeCanvasSizePercent(.75,.85)'>large</div>
+	<div id = 'eraseCanvas' class = 'dropMenuSelector'  onclick = 'eraseCanvas()'>erase canvas</div>
+	<span id = 'gridToggleHolder' class = 'dropMenuSelector' >
+		<span>show grid</span>
+		<input id = 'toggleGrid' type=checkbox name="gridBox" onchange="toggleGrid()" checked = 'yes'>
+	</span>
+</div>	
 
-		<div id = 'pixelDropMenu' class = 'dropMenu'>
-			<div id = '2Pixel' onclick = 'drawGrid(2)'>2</div>
-			<div id = '4Pixel' onclick = 'drawGrid(4)'>4</div>
-			<div id = '8Pixel' onclick = 'drawGrid(8)'>8</div>
-			<div id = '16Pixel' onclick = 'drawGrid(16)'>16</div>
-			<div id = '32Pixel' onclick = 'drawGrid(32)'>32</div>
-			<div id = '64Pixel' onclick = "drawGrid(64)">64</div>
-			<div id = '128Pixel' onclick = 'drawGrid(128)'>128</div>
-		</div>
+<div id = 'pixelDropMenu' class = 'dropMenu'>
+	<div id = '2Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(2)'>2</div>
+	<div id = '4Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(4)'>4</div>
+	<div id = '8Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(8)'>8</div>
+	<div id = '16Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(16)'>16</div>
+	<div id = '32Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(32)'>32</div>
+	<div id = '64Pixel' class = 'dropMenuSelector'  onclick = "drawGrid(64)">64</div>
+	<div id = '128Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(128)'>128</div>
+</div>
 
+<div id = 'exportDropMenu'  class = 'dropMenu'>
+	<div id = 'createJPG' class = 'dropMenuSelector'  onclick = 'createPNG()'>create png</div>
+</div>
+
+<!-- Drawing Canvas -->
 <canvas id="pixelit" style= "border:2px solid black"></canvas>
 
 <!-- Drawing Grid Overlay -->
@@ -60,10 +55,10 @@
 	<div id = 'fillIcon' class = 'toolIcon'></div>
 </div> -->
 
+<!-- Color Selection Canvas -->
 <canvas id="colorCanvas" oncontextmenu="return false"  width = '25' height = '300' style= "border:2px solid black"></canvas>
 
-
-
+<!-- Current Colors Selected Canvas -->
 <canvas id="currentColors" oncontextmenu="return false"  width = '25' height = '50' style= "border:2px solid black"></canvas>
 
 

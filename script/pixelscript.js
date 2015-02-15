@@ -26,11 +26,7 @@ var colorList = [
     ['#140014', '#290029', '#3D003D', '#520052', '#660066', '#7A007A', '#8F008F', '#A300A3', '#B800B8', '#CC00CC', '#D119D1', '#D633D6']
 ];
 
-// document.write(width);
-// document.write(' x ');
-// document.write(height);
-
-var menus = ['sizeDropMenu','pixelDropMenu'];
+var menus = ['sizeDropMenu','pixelDropMenu', 'exportDropMenu'];
 
 function toggleDropMenu(selectedMenu) {
     for (menu in menus) {
@@ -46,7 +42,6 @@ function toggleDropMenu(selectedMenu) {
         document.getElementById(selectedMenu).style.display = "none";
         dropMenuActive = false;
     }
-
 }
 
 
