@@ -27,6 +27,18 @@ var colorList = [
 ];
 
 var menus = ['sizeDropMenu','pixelDropMenu', 'exportDropMenu'];
+var pixelSizeSelectorIdList = [2,4,8,16,32,64,128];
+
+function highlightPixelSize() {
+    for (size in pixelSizeSelectorIdList) {
+        if (pixelSizeSelectorIdList[size] == pixelSize) {
+            document.getElementById(String(pixelSizeSelectorIdList[size]) + "Pixel").style.backgroundColor = '#DEDEDA';
+        }
+        else {
+            document.getElementById(String(pixelSizeSelectorIdList[size]) + "Pixel").style.backgroundColor = 'white';
+        }
+    }
+}
 
 function toggleDropMenu(selectedMenu) {
     for (menu in menus) {
@@ -52,6 +64,7 @@ function changeColor(evt) {
 
 function drawGrid(size) {
     pixelSize = size;
+    highlightPixelSize()
     gridCanvas = document.getElementById("pixelitgrid");
     gridContext = gridCanvas.getContext("2d");
     gridContext.fillStyle = 'white';
@@ -59,7 +72,7 @@ function drawGrid(size) {
     gridContext.fillStyle = 'black';
     for (xCount = pixelSize; xCount < width; xCount += pixelSize) {
         gridContext.fillRect(xCount, 0, 1, height);
-        console.log(xCount);
+        
     }
 
     for (yCount = pixelSize; yCount < height; yCount += pixelSize) {
@@ -114,6 +127,7 @@ function changeCanvasSizePercent(widthPercent, heightPercent) {
 
 function pixelSizeChange(size) {
     pixelSize = size;
+    highlightPixelSize();
     drawGrid(pixelSize);
 }
 
@@ -152,7 +166,6 @@ function domLoaded(size) {
     canvas.height = browserHeight * .90;
     canvas.width = browserWidth * .90;
 
-    document.getElementById("sizeContainer").style.left = browserWidth * .9 + 115 + "px";
     gridCanvas.height = browserHeight * .90;
     gridCanvas.width = browserWidth * .90;
     drawGrid(pixelSize);

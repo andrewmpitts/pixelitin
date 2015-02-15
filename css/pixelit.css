@@ -35,14 +35,59 @@ h1 {
 	display: inline-block;
 }
 
-#menuButtonHolder {
+#menuSelectorHolder {
 	position: relative;
 	padding: 1px;
 	top: -10px;
 	left: 25px;
 }
 
+.menuSelector {
+	padding-right: 5px;
+	cursor: pointer;
+}
 
+
+/*Drop Menus*/
+.dropMenu {
+	position: relative;
+	top: 39px;
+	background-color: white;
+	text-align: left;
+	border: 1px solid black;
+	padding: 2px;
+	color: black;
+	z-index: 3;
+}
+
+#sizeDropMenu {
+	position: relative;
+	display: none;
+	left: 110px;
+}
+
+#pixelDropMenu{
+	position: relative;
+	display: none;
+	left: 168px;
+}
+
+#exportDropMenu {
+	position: relative;
+	left: 215px;
+	display: none;
+}
+
+/*Drop Menu Selectors*/
+.dropMenuSelector {
+	cursor: pointer;
+	padding: 4px;
+}
+
+#toggleGrid {
+	position: relative;
+	top: 3px;
+}
 
 /*Tool Bar*/
 
@@ -82,49 +127,6 @@ h1 {
 	z-index: 2;
 }
 
-.darkener{
-	position: fixed;
-	left: 0%;
-	top: 0%;
-	width: 100%;
-	height: 100%;
-	background-color: black;
-	opacity: .9;
-	z-index: 3;
-	display: hidden;
-}
-
-/*drop menus*/
-.dropMenu {
-	position: relative;
-	top: 39px;
-	background-color: white;
-	text-align: left;
-	border: 1px solid black;
-	padding: 2px;
-	color: black;
-	z-index: 3;
-}
-
-#sizeDropMenu {
-	position: relative;
-	display: none;
-	left: 110px;
-}
-
-#pixelDropMenu{
-	position: relative;
-	display: none;
-	left: 168px;
-}
-
-.toolbarMenuDropdownButton{
-	position: relative;
-	font-family: arial;
-	font-size: 1.1em;
-	color: white;
-	top: 0px;
-}
 
 .rightMenuContainer{
 	position: fixed;
@@ -157,6 +159,7 @@ h1 {
 	z-index: 4;
 }
 
+/*Pixelit.in Canvas*/
 #pixelit{
 	position: absolute;
 	left: 25px;
@@ -185,39 +188,6 @@ h1 {
     -moz-user-select: none;
 }
 
-#sizeContainer
-{
-	position: absolute;
-	left: 200px;
-	top: 0px;
-	background-color: green;
-}
-
-.box {
-	position: absolute;
-	top: 12.5%;
-	left: 12.5%;
-	width: 75%;
-	height: 75%;
-	background-color: blue;
-}
-
-#loginHolder{
-	position: absolute;
-	/* top: 50px; */
-	left: 1300px;
-	/* margin: auto; */
-}
-
-#canvaSizeHolder{
-	position: relative;
-
-}
-
-#pixelSizeHolder{
-	position: relative;
-}
-
 .arrow-right {
 	top: 2px;
 	width: 0; 
@@ -238,6 +208,7 @@ h1 {
 	display: inline-block;
 }
 
+/*Bottom Info Bar*/
 .centeredHolder {
 	position: absolute;
 	bottom: 1%;
@@ -253,23 +224,3 @@ h1 {
 	z-index: 1;
 }
 
-#toggleGrid {
-	position: relative;
-	top: 3px;
-}
-
-#exportDropMenu {
-	position: relative;
-	left: 215px;
-	display: none;
-}
-
-.dropMenuSelector {
-	cursor: pointer;
-	padding: 4px;
-}
-
-.menuSelector {
-	padding-right: 5px;
-	cursor: pointer;
-}
