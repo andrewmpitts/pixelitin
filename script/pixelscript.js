@@ -82,7 +82,7 @@ function decToHex(decimal) {
     // I'm a damn English major, okay?
     remainder = decimal % 16;
     denominator = Math.floor(decimal / 16)
-    valuesToHex = [remainder, denominator];
+    valuesToHex = [denominator, remainder];
     for (value in valuesToHex) {
         if (valuesToHex[value] > 9) {
             if (valuesToHex[value] < 17){
