@@ -78,6 +78,12 @@ h1 {
 	display: none;
 }
 
+#colorDropMenu {
+	position: relative;
+	left: 272px;
+	display: none;
+}
+
 /*Drop Menu Selectors*/
 .dropMenuSelector {
 	cursor: pointer;
@@ -224,3 +230,15 @@ h1 {
 	z-index: 1;
 }
 
+/*Color Preview*/
+.colorPreview {
+	positon: relative;
+}
+
+#dropMenuColorPreview {
+	width: 98%;
+	height: 50px;
+	background-color: black;
+	border: 1px black solid;
+	margin: 0 auto;
+}

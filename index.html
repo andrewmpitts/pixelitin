@@ -13,8 +13,10 @@
 	<h1 id = 'title'>pixelit.in</h1>
 	<span id = 'menuSelectorHolder'>
 			<span id = 'canvasMenu' class = 'menuSelector' onclick = 'toggleDropMenu("sizeDropMenu")'>canvas</span>
-			<span id="pixelSize" class = 'menuSelector'  onclick = 'toggleDropMenu("pixelDropMenu")'>pixels</span>		
-			<span id="pixelSize" class = 'menuSelector'  onclick = 'toggleDropMenu("exportDropMenu")'>export</span>
+			<span id = "pixelSize" class = 'menuSelector'  onclick = 'toggleDropMenu("pixelDropMenu")'>pixels</span>		
+			<span id = "exportSize" class = 'menuSelector'  onclick = 'toggleDropMenu("exportDropMenu")'>export</span>
+			<span id = "colorMenuToggle" class = 'menuSelector' onclick = 'toggleDropMenu("colorDropMenu")'>color</span>
+			<span id = "acceptMenu"></span>
 	</span>
 </div>
 
@@ -37,6 +39,19 @@
 	<div id = '32Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(32)'>32</div>
 	<div id = '64Pixel' class = 'dropMenuSelector'  onclick = "drawGrid(64)">64</div>
 	<div id = '128Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(128)'>128</div>
+</div>
+
+<div id = 'colorDropMenu' class = 'dropMenu'>
+	R<input id = "redSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'redValue')"/>
+	<span id = "redValue" class = "colorSliderValue"></span>
+	</br>
+	G<input id = "greenSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0"onchange="showColorPreviewValue(this.value,'greenValue')"/>
+	<span id = "greenValue" class = "colorSliderValue"></span>
+	</br>
+	B<input id = "blueSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'blueValue')"/>
+	<span id = "blueValue" class = "colorSliderValue"></span>
+	</br>click the box below to use the color
+	<div id = "dropMenuColorPreview" class = "colorPreview" onclick = "changeColorFromCustomPreview(1)" oncontextmenu = "return false"></div>
 </div>
 
 <div id = 'exportDropMenu'  class = 'dropMenu'>

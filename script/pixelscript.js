@@ -15,7 +15,7 @@ var canvas = document.getElementById("pixelit");
 var gridCanvas = document.getElementById("pixelitgrid");
 var dropMenuActive = false;
 var colorList = [
-    ['black', 'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'brown', 'Chartreuse', 'DarkGreen', 'DeepPink', 'white'],
+    ['white', 'black', 'blue', 'red', 'yellow', 'orange', '#8C20CC', '#CC924A', 'Chartreuse', 'DarkGreen', 'DeepPink', 'green'],
     ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#FFFFFF', '#FFFFFF'],
     ['#0A0500', '#140A00', '#1F0F00', '#291400', '#331A00', '#3D1F00', '#472400', '#522900', '#5C2E00', '#663300', '#754719', '#855C33'],
     ['#1A0000', '#330000', '#4C0000', '#660000', '#800000', '#990000', '#B20000', '#CC0000', '#E60000', '#FF0000', '#FF1919', '#FF3333'],
@@ -26,8 +26,10 @@ var colorList = [
     ['#140014', '#290029', '#3D003D', '#520052', '#660066', '#7A007A', '#8F008F', '#A300A3', '#B800B8', '#CC00CC', '#D119D1', '#D633D6']
 ];
 
-var menus = ['sizeDropMenu','pixelDropMenu', 'exportDropMenu'];
+var menus = ['sizeDropMenu','pixelDropMenu', 'exportDropMenu', 'colorDropMenu'];
 var pixelSizeSelectorIdList = [2,4,8,16,32,64,128];
+var hexValues = ['A','B','C','D','E','F']
+var colorPreview = [0,0,0];
 
 function highlightPixelSize() {
     for (size in pixelSizeSelectorIdList) {
@@ -38,6 +40,26 @@ function highlightPixelSize() {
             document.getElementById(String(pixelSizeSelectorIdList[size]) + "Pixel").style.backgroundColor = 'white';
         }
     }
+}
+
+function showColorPreviewValue(newValue, id) {
+        if (id == 'redValue') {
+            colorPreview[0] = newValue;
+        }
+        if (id == 'greenValue') {
+            colorPreview[1] = newValue;
+        }
+        if (id == 'blueValue') {
+            colorPreview[2] = newValue;
+        }
+        console.log(newValue);
+        document.getElementById(id).innerHTML = decToHex(newValue);
+        updateColorPreview(colorPreview);
+    }
+
+function updateColorPreview(RGBColor) {
+
+    document.getElementById("dropMenuColorPreview").style.backgroundColor = "#" + decToHex(RGBColor[0]) + decToHex(RGBColor[1]) + decToHex(RGBColor[2]);
 }
 
 function toggleDropMenu(selectedMenu) {
@@ -56,10 +78,33 @@ function toggleDropMenu(selectedMenu) {
     }
 }
 
+function decToHex(decimal) {
+    // I'm a damn English major, okay?
+    remainder = decimal % 16;
+    denominator = Math.floor(decimal / 16)
+    valuesToHex = [remainder, denominator];
+    for (value in valuesToHex) {
+        if (valuesToHex[value] > 9) {
+            if (valuesToHex[value] < 17){
+                valuesToHex[value] = hexValues[valuesToHex[value] - 10];
+            }
+        }
+    }
+    return valuesToHex.join('');
+}
 
 function changeColor(evt) {
     var mousePos = getMousePos(colorCanvas, evt);
     context.fillStyle = colorList[Math.floor((mousePos.y / 50))][(Math.floor(mousePos.x / 50))];
+}
+
+function changeColorFromCustomPreview(mouseButton) {
+    if (mouseButton == 1) {
+        paintColor = document.getElementById("dropMenuColorPreview").style.backgroundColor;
+    }
+    if (mouseButton == 2) {
+        paintColor2 = document.getElementById("dropMenuColorPreview").style.backgroundColor;
+    }
 }
 
 function drawGrid(size) {
@@ -71,10 +116,8 @@ function drawGrid(size) {
     gridContext.fillRect(0, 0, width, height);
     gridContext.fillStyle = 'black';
     for (xCount = pixelSize; xCount < width; xCount += pixelSize) {
-        gridContext.fillRect(xCount, 0, 1, height);
-        
+        gridContext.fillRect(xCount, 0, 1, height);   
     }
-
     for (yCount = pixelSize; yCount < height; yCount += pixelSize) {
         gridContext.fillRect(0, yCount, width, 1);
     }
@@ -198,6 +241,18 @@ function domLoaded(size) {
 
     }, false);
 	
+    dropMenuColorPreview.addEventListener('click', function (evt) {
+        changeColorFromCustomPreview(1); 
+        currentColorContext.fillStyle = paintColor;
+        currentColorContext.fillRect(0, 0, blockSize, blockSize);
+    }, false);
+
+    dropMenuColorPreview.addEventListener('contextmenu', function (evt) {
+        changeColorFromCustomPreview(2); 
+        currentColorContext.fillStyle = paintColor2;
+        currentColorContext.fillRect(0, 25, blockSize, blockSize);
+    }, false);
+
     gridCanvas.addEventListener('click', function (evt) {
         context.fillStyle = paintColor;
         var mousePos = getMousePos(gridCanvas, evt);
