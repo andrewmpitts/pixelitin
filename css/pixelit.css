@@ -81,6 +81,9 @@ h1 {
 #colorDropMenu {
 	position: relative;
 	left: 272px;
+	width: 240px;
+	height: 90px;
+	padding: 5px;
 	display: none;
 }
 
@@ -236,9 +239,14 @@ h1 {
 }
 
 #dropMenuColorPreview {
-	width: 98%;
+	position: relative;
+	left: 175px;
+	top: -70px;
+	width: 50px;
 	height: 50px;
+	/*float: right;*/
+
 	background-color: black;
 	border: 1px black solid;
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 }

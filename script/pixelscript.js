@@ -174,9 +174,14 @@ function pixelSizeChange(size) {
     drawGrid(pixelSize);
 }
 
-function createPNG() {
+function exportPNG() {
     var canvasImage = canvas.toDataURL("image/png");
     window.open(canvasImage);
+}
+
+function exportJPG() {
+    var jpegImage = canvas.toDataURL("image/jpg");
+    window.open(jpegImage);
 }
 
 function eraseCanvas() {

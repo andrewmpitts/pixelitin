@@ -43,19 +43,21 @@
 
 <div id = 'colorDropMenu' class = 'dropMenu'>
 	R<input id = "redSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'redValue')"/>
-	<span id = "redValue" class = "colorSliderValue"></span>
+	<span id = "redValue" class = "colorSliderValue">00</span>
 	</br>
 	G<input id = "greenSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0"onchange="showColorPreviewValue(this.value,'greenValue')"/>
-	<span id = "greenValue" class = "colorSliderValue"></span>
+	<span id = "greenValue" class = "colorSliderValue">00</span>
 	</br>
 	B<input id = "blueSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'blueValue')"/>
-	<span id = "blueValue" class = "colorSliderValue"></span>
-	</br>click the box below to use the color
+	<span id = "blueValue" class = "colorSliderValue">00</span>
+	</br><!-- click the box below to use the color -->
 	<div id = "dropMenuColorPreview" class = "colorPreview" onclick = "changeColorFromCustomPreview(1)" oncontextmenu = "return false"></div>
 </div>
 
 <div id = 'exportDropMenu'  class = 'dropMenu'>
-	<div id = 'createJPG' class = 'dropMenuSelector'  onclick = 'createPNG()'>create png</div>
+	<div id = 'exportPNG' class = 'dropMenuSelector'  onclick = 'exportPNG()'>
+	export png</div>
+	<div id = 'exportJPEG' class = 'dropMenuSelector' onclick = 'exportJPG()'>export jpeg</div>
 </div>
 
 <!-- Drawing Canvas -->
