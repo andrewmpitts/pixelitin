@@ -193,6 +193,14 @@ function eraseCanvas() {
 	}
 }
 
+function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+
 function domLoaded(size) {
     canvas = document.getElementById("pixelit");
     context = canvas.getContext("2d");
@@ -218,13 +226,7 @@ function domLoaded(size) {
     gridCanvas.width = browserWidth * .90;
     drawGrid(pixelSize);
 
-    function getMousePos(canvas, evt) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-            x: evt.clientX - rect.left,
-            y: evt.clientY - rect.top
-        };
-    }
+    
 	
     currentColorContext.fillRect(0, 0, blockSize, blockSize);
     currentColorContext.fillStyle = paintColor2;
@@ -296,6 +298,6 @@ function domLoaded(size) {
 		}
     }, false);
 
-
-
+    document.getElementById('pixelit').style.display = 'block';
+    document.getElementById('pixelitgrid').style.display = 'block';
 }
