@@ -6,23 +6,12 @@
 	
 </head>
 <body>
-	<div id = 'topBarBackground' class = 'topBar'></div>
+<!-- 	<div id = 'topBarBackground' class = 'topBar'></div>
 	<div id = 'topBar' class = 'topBar'>
-		<h1 id = 'title'>pixelit.in</h1>
+	</div> -->
 
-		<span id = 'menuSelectorHolder'>
-
-
-		</span>
-
-
-	<div id = 'exportDropMenu'  class = 'dropMenu'>
-		<div id = 'exportPNG' class = 'dropMenuSelector'  onclick = 'exportPNG()'>
-		export png</div>
-		<div id = 'exportJPEG' class = 'dropMenuSelector' onclick = 'exportJPG()'>export jpeg</div>
-	</div>
-	</div>
 <div id = 'centerHolder'>
+	<h1 id = 'title'>pixelit.in</h1>
 	<div id = 'rightBar'>
 		<!-- Color Selection Canvas -->
 		<canvas id="colorCanvas" oncontextmenu="return false"  width = '50' height = '300' style= "border:2px solid black"></canvas>
@@ -30,32 +19,22 @@
 		<!-- Current Colors Selected Canvas -->
 		<canvas id="currentColors" oncontextmenu="return false"  width = '25' height = '50' style= "border:2px solid black"></canvas>
 		<div id = "colorMenuToggle"  class = 'dropMenuSelector' onclick = 'toggleDropMenu("colorDropMenu")'>custom</br>color</div>
+
 		<div id = 'pixelSizeHolder'>
 			<div id = 'pixelSizeTitle'>pixel size</div>
 			<div id = 'pixelSize'></div>
 			<span id = 'uiMinus' onclick = 'decreasePixelSize()'></span>
 			<span id = 'uiPlus' onclick = 'increasePixelSize()'></span>
 		</div>
-
-		
-
-
 	</div>
+
 	<div id = 'leftBar'>
-		<!-- <div id="toolBar" oncontextmenu="return false">
-			<div id = 'pencilIcon' class = 'toolIcon'></div>
-			<div id = 'lineIcon' class = 'toolIcon'></div>
-			<div id = 'fillIcon' class = 'toolIcon'></div>
-		</div> -->
-
 		<span id = 'leftOptionHolder'>
-
 			</br>
-			<button type = "button" id = 'eraseCanvas'  onclick = 'eraseCanvas()'>erase</br>canvas</button>
+			<button type = "button" id = 'eraseCanvas'  onclick = 'eraseCanvas()'>erase</button>
 			</br>
 			</br>
-			<button type = "button"  id = "exportSize" class = 'menuSelector'  onclick = 'toggleDropMenu("exportDropMenu")'>export</button>
-			
+			<button type = "button"  id = "exportSize"   onclick = 'exportPNG()'>save</button>
 			</br>
 			</br>
 			<span>show</br>grid</span>
@@ -64,7 +43,6 @@
 			</br>
 		</span>
 	</div>
-
 
 	<div id = 'pixelDropMenu' class = 'dropMenu'>
 		<div id = '2Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(2)'>2</div>
@@ -75,20 +53,27 @@
 		<div id = '64Pixel' class = 'dropMenuSelector'  onclick = "drawGrid(64)">64</div>
 		<div id = '128Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(128)'>128</div>
 	</div>
+
 	<div id = 'colorDropMenu' class = 'dropMenu'>
-		R<input id = "redSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'redValue')"/>
-		<span id = "redValue" class = "colorSliderValue">00</span>
-		</br>
-		G<input id = "greenSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0"onchange="showColorPreviewValue(this.value,'greenValue')"/>
-		<span id = "greenValue" class = "colorSliderValue">00</span>
-		</br>
-		B<input id = "blueSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'blueValue')"/>
-		<span id = "blueValue" class = "colorSliderValue">00</span>
+		
+			<input id = "redSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'redValue')"/>
+			
+			<input id = "greenSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0"onchange="showColorPreviewValue(this.value,'greenValue')"/>
+			
+			<input id = "blueSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'blueValue')"/>
+		<div id = 'RGBHolder'>
+			R
+			</br>
+			G
+			</br>
+			B
+			</br>
+		</div>
+
 		</br><!-- click the box below to use the color -->
 		<span id = "dropMenuColorPreview" class = "colorPreview" onclick = "changeColorFromCustomPreview(1)" oncontextmenu = "return false"></span>
 		<span id = "colorHexValue" class = "colorSliderValue">#000000</span>
 	</div>	
-
 
 	<!-- Drawing Canvas -->
 	<div id 'canvasHolder'>
@@ -97,15 +82,13 @@
 		<!-- Drawing Grid Overlay -->
 		<canvas id="pixelitgrid" oncontextmenu="return false" style= "border:2px solid black"></canvas>
 	</div>
-	
-
-
 
 	<div class = 'centeredHolder' id = 'bottomInfo'>
 		<span id = 'createdBy'>
 			created by Andrew Pitts | <a href="http://apitts.com">apitts.com</a>
 		</span>
 	</div>
+
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

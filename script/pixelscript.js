@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     domLoaded(pixelSize)
 }, false);
-var browserWidth = $(window).width();
-var browserHeight = $(window).height();
-var width = browserWidth;
-var height = browserHeight;
+// var browserWidth = $(window).width();
+// var browserHeight = $(window).height();
+var width = 1280;
+var height = 720;
 var pixelSize = 8;
 var xRes = width / pixelSize;
 var yRes = height / pixelSize;
@@ -20,36 +20,35 @@ var colorList = [
     ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#FFFFFF', '#FFFFFF']
 ];
 
-var menus = ['exportDropMenu', 'colorDropMenu'];
-var pixelSizeSelectorIdList = [2,4,8,16,32,64,128];
-var hexValues = ['A','B','C','D','E','F']
-var colorPreview = [0,0,0];
+var menus = ['colorDropMenu'];
+var pixelSizeSelectorIdList = [2, 4, 8, 16, 32, 64, 128];
+var hexValues = ['A', 'B', 'C', 'D', 'E', 'F']
+var colorPreview = [0, 0, 0];
 
 function highlightPixelSize() {
     for (size in pixelSizeSelectorIdList) {
         if (pixelSizeSelectorIdList[size] == pixelSize) {
             document.getElementById(String(pixelSizeSelectorIdList[size]) + "Pixel").style.backgroundColor = '#DEDEDA';
-        }
-        else {
+        } else {
             document.getElementById(String(pixelSizeSelectorIdList[size]) + "Pixel").style.backgroundColor = 'white';
         }
     }
 }
 
 function showColorPreviewValue(newValue, id) {
-        if (id == 'redValue') {
-            colorPreview[0] = newValue;
-        }
-        if (id == 'greenValue') {
-            colorPreview[1] = newValue;
-        }
-        if (id == 'blueValue') {
-            colorPreview[2] = newValue;
-        }
-        console.log(decToHex(newValue));
-        document.getElementById(id).innerHTML = decToHex(newValue);
-        updateColorPreview(colorPreview);
+    if (id == 'redValue') {
+        colorPreview[0] = newValue;
     }
+    if (id == 'greenValue') {
+        colorPreview[1] = newValue;
+    }
+    if (id == 'blueValue') {
+        colorPreview[2] = newValue;
+    }
+    console.log(decToHex(newValue));
+    // document.getElementById(id).innerHTML = decToHex(newValue);
+    updateColorPreview(colorPreview);
+}
 
 function updateColorPreview(RGBColor) {
     document.getElementById("colorHexValue").innerHTML = "#" + decToHex(RGBColor[0]) + decToHex(RGBColor[1]) + decToHex(RGBColor[2]);
@@ -65,8 +64,7 @@ function toggleDropMenu(selectedMenu) {
     if (dropMenuActive == false) {
         document.getElementById(selectedMenu).style.display = "inline-block";
         dropMenuActive = true;
-        }
-    else {
+    } else {
         document.getElementById(selectedMenu).style.display = "none";
         dropMenuActive = false;
     }
@@ -79,7 +77,7 @@ function decToHex(decimal) {
     valuesToHex = [denominator, remainder];
     for (value in valuesToHex) {
         if (valuesToHex[value] > 9) {
-            if (valuesToHex[value] < 17){
+            if (valuesToHex[value] < 17) {
                 valuesToHex[value] = hexValues[valuesToHex[value] - 10];
             }
         }
@@ -110,7 +108,7 @@ function drawGrid(size) {
     gridContext.fillRect(0, 0, width, height);
     gridContext.fillStyle = 'black';
     for (xCount = pixelSize; xCount < width; xCount += pixelSize) {
-        gridContext.fillRect(xCount, 0, 1, height);   
+        gridContext.fillRect(xCount, 0, 1, height);
     }
     for (yCount = pixelSize; yCount < height; yCount += pixelSize) {
         gridContext.fillRect(0, yCount, width, 1);
@@ -142,7 +140,7 @@ function changeCanvasSize(width, height) {
         gridCanvas.width = width;
         gridCanvas.height = height;
         drawGrid(pixelSize);
-		document.getElementById('sizePrompt').style.display = 'none';
+        document.getElementById('sizePrompt').style.display = 'none';
     } else {
         return
     }
@@ -172,8 +170,7 @@ function pixelSizeChange(size) {
 function increasePixelSize() {
     if (pixelSize == 128) {
         return
-    }
-    else {
+    } else {
         pixelSizeChange(pixelSizes[pixelSizes.indexOf(pixelSize) + 1])
     }
 }
@@ -181,8 +178,7 @@ function increasePixelSize() {
 function decreasePixelSize(currentSize) {
     if (pixelSize == 2) {
         return
-    }
-    else {
+    } else {
         pixelSizeChange(pixelSizes[pixelSizes.indexOf(pixelSize) - 1])
     }
 }
@@ -198,26 +194,26 @@ function exportJPG() {
 }
 
 function eraseCanvas() {
-	if (confirm("Are you sure you want to erase the canvas?")) {
-		context.fillStyle = 'white';
-		context.fillRect(0,0, 10000, 10000);
-	} else {
-		return
-	}
+    if (confirm("Are you sure you want to erase the canvas?")) {
+        context.fillStyle = 'white';
+        context.fillRect(0, 0, 10000, 10000);
+    } else {
+        return
+    }
 }
 
 function getMousePos(canvas, evt) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-            x: evt.clientX - rect.left,
-            y: evt.clientY - rect.top
-        };
-    }
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
 
 function drawLine(coords1, coords2) {
     context.beginPath();
-    context.moveTo(coords1[0],coords1[1]);
-    context.lineTo(coords2[0],coords2[1]);
+    context.moveTo(coords1[0], coords1[1]);
+    context.lineTo(coords2[0], coords2[1]);
     context.closePath();
     context.stroke();
 }
@@ -231,23 +227,23 @@ function domLoaded(size) {
     var gridContext = gridCanvas.getContext("2d");
     var currentColorCanvas = document.getElementById("currentColors");
     var currentColorContext = currentColorCanvas.getContext("2d");
-	var mouseDown = 0;
+    var mouseDown = 0;
     pixelSize = size
     var blockSize = 25;
 
     canvas.width = 1280;
-    canvas.height = 760;
+    canvas.height = 720;
 
     gridCanvas.width = 1280;
-    gridCanvas.height = 760;
-    
+    gridCanvas.height = 720;
+
     document.getElementById('pixelSize').innerHTML = pixelSize;
     document.getElementById('uiMinus').innerHTML = '-';
     document.getElementById('uiPlus').innerHTML = '+';
 
     drawGrid(pixelSize);
 
-    
+
     currentColorContext.fillRect(0, 0, blockSize, blockSize);
     currentColorContext.fillStyle = paintColor2;
     currentColorContext.fillRect(0, 25, blockSize, blockSize);
@@ -261,7 +257,7 @@ function domLoaded(size) {
     }
 
 
-	
+
     colorCanvas.addEventListener('click', function (evt) {
         var mousePos = getMousePos(colorCanvas, evt);
         paintColor = colorList[Math.floor((mousePos.x / 25))][(Math.floor(mousePos.y / 25))];
@@ -271,20 +267,20 @@ function domLoaded(size) {
 
     colorCanvas.addEventListener('contextmenu', function (evt) {
         var mousePos = getMousePos(colorCanvas, evt);
-		paintColor2 = colorList[Math.floor((mousePos.x / 25))][(Math.floor(mousePos.y / 25))];
+        paintColor2 = colorList[Math.floor((mousePos.x / 25))][(Math.floor(mousePos.y / 25))];
         currentColorContext.fillStyle = paintColor2;
         currentColorContext.fillRect(0, 25, blockSize, blockSize);
 
     }, false);
-	
+
     dropMenuColorPreview.addEventListener('click', function (evt) {
-        changeColorFromCustomPreview(1); 
+        changeColorFromCustomPreview(1);
         currentColorContext.fillStyle = paintColor;
         currentColorContext.fillRect(0, 0, blockSize, blockSize);
     }, false);
 
     dropMenuColorPreview.addEventListener('contextmenu', function (evt) {
-        changeColorFromCustomPreview(2); 
+        changeColorFromCustomPreview(2);
         currentColorContext.fillStyle = paintColor2;
         currentColorContext.fillRect(0, 25, blockSize, blockSize);
     }, false);
@@ -294,37 +290,37 @@ function domLoaded(size) {
         var mousePos = getMousePos(gridCanvas, evt);
         context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
     }, false);
-	
-	gridCanvas.addEventListener('contextmenu', function (evt) {
+
+    gridCanvas.addEventListener('contextmenu', function (evt) {
         context.fillStyle = paintColor2;
         var mousePos = getMousePos(gridCanvas, evt);
         context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
     }, false);
-	
-	gridCanvas.addEventListener('mousedown', function (ev) {
-		mouseDown = 1;
+
+    gridCanvas.addEventListener('mousedown', function (ev) {
+        mouseDown = 1;
     }, false);
-	
-	gridCanvas.addEventListener('mouseup', function (ev) {
-		mouseDown = 0;
+
+    gridCanvas.addEventListener('mouseup', function (ev) {
+        mouseDown = 0;
     }, false);
-	
-	gridCanvas.addEventListener('mousemove', function (ev) {
-		var e = window.event
+
+    gridCanvas.addEventListener('mousemove', function (ev) {
+        var e = window.event
         context.fillStyle = paintColor;
         var mousePos = getMousePos(gridCanvas, ev);
         if (mouseDown == 1) {
             context.fillStyle = paintColor;
             context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
-			if (e.which == 1){
-				context.fillStyle = paintColor;
-				context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
-			}
-			if (e.which == 3){
-				context.fillStyle = paintColor2;
-				context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
-			}
-		}
+            if (e.which == 1) {
+                context.fillStyle = paintColor;
+                context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
+            }
+            if (e.which == 3) {
+                context.fillStyle = paintColor2;
+                context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
+            }
+        }
     }, false);
     // drawLine([25,25],[100,100]);
     document.getElementById('pixelit').style.display = 'block';
