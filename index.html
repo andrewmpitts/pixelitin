@@ -5,18 +5,75 @@
 	<link rel="stylesheet" type="text/css" href="css/pixelit.css">
 	
 </head>
-
-
 <body>
 	<div id = 'topBarBackground' class = 'topBar'></div>
 	<div id = 'topBar' class = 'topBar'>
 		<h1 id = 'title'>pixelit.in</h1>
+
 		<span id = 'menuSelectorHolder'>
-				<!-- <span id = "pixelSize" class = 'menuSelector'  onclick = 'toggleDropMenu("pixelDropMenu")'>pixels</span>	 -->	
-				<span id = "exportSize" class = 'menuSelector'  onclick = 'toggleDropMenu("exportDropMenu")'>save</span>
-				<span id = "colorMenuToggle" class = 'menuSelector' onclick = 'toggleDropMenu("colorDropMenu")'>color</span>
-				<span id = "acceptMenu"></span>
+
+
 		</span>
+
+
+	<div id = 'exportDropMenu'  class = 'dropMenu'>
+		<div id = 'exportPNG' class = 'dropMenuSelector'  onclick = 'exportPNG()'>
+		export png</div>
+		<div id = 'exportJPEG' class = 'dropMenuSelector' onclick = 'exportJPG()'>export jpeg</div>
+	</div>
+	</div>
+<div id = 'centerHolder'>
+	<div id = 'rightBar'>
+		<!-- Color Selection Canvas -->
+		<canvas id="colorCanvas" oncontextmenu="return false"  width = '50' height = '300' style= "border:2px solid black"></canvas>
+
+		<!-- Current Colors Selected Canvas -->
+		<canvas id="currentColors" oncontextmenu="return false"  width = '25' height = '50' style= "border:2px solid black"></canvas>
+		<div id = "colorMenuToggle"  class = 'dropMenuSelector' onclick = 'toggleDropMenu("colorDropMenu")'>custom</br>color</div>
+		<div id = 'pixelSizeHolder'>
+			<div id = 'pixelSizeTitle'>pixel size</div>
+			<div id = 'pixelSize'></div>
+			<span id = 'uiMinus' onclick = 'decreasePixelSize()'></span>
+			<span id = 'uiPlus' onclick = 'increasePixelSize()'></span>
+		</div>
+
+		
+
+
+	</div>
+	<div id = 'leftBar'>
+		<!-- <div id="toolBar" oncontextmenu="return false">
+			<div id = 'pencilIcon' class = 'toolIcon'></div>
+			<div id = 'lineIcon' class = 'toolIcon'></div>
+			<div id = 'fillIcon' class = 'toolIcon'></div>
+		</div> -->
+
+		<span id = 'leftOptionHolder'>
+
+			</br>
+			<button type = "button" id = 'eraseCanvas'  onclick = 'eraseCanvas()'>erase</br>canvas</button>
+			</br>
+			</br>
+			<button type = "button"  id = "exportSize" class = 'menuSelector'  onclick = 'toggleDropMenu("exportDropMenu")'>export</button>
+			
+			</br>
+			</br>
+			<span>show</br>grid</span>
+			<input id = 'toggleGrid' type=checkbox name="gridBox" onchange="toggleGrid()" checked = 'yes'>
+			</br>
+			</br>
+		</span>
+	</div>
+
+
+	<div id = 'pixelDropMenu' class = 'dropMenu'>
+		<div id = '2Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(2)'>2</div>
+		<div id = '4Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(4)'>4</div>
+		<div id = '8Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(8)'>8</div>
+		<div id = '16Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(16)'>16</div>
+		<div id = '32Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(32)'>32</div>
+		<div id = '64Pixel' class = 'dropMenuSelector'  onclick = "drawGrid(64)">64</div>
+		<div id = '128Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(128)'>128</div>
 	</div>
 	<div id = 'colorDropMenu' class = 'dropMenu'>
 		R<input id = "redSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'redValue')"/>
@@ -28,56 +85,9 @@
 		B<input id = "blueSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'blueValue')"/>
 		<span id = "blueValue" class = "colorSliderValue">00</span>
 		</br><!-- click the box below to use the color -->
-		<div id = "dropMenuColorPreview" class = "colorPreview" onclick = "changeColorFromCustomPreview(1)" oncontextmenu = "return false"></div>
-	</div>
-
-	<div id = 'exportDropMenu'  class = 'dropMenu'>
-		<div id = 'exportPNG' class = 'dropMenuSelector'  onclick = 'exportPNG()'>
-		export png</div>
-		<div id = 'exportJPEG' class = 'dropMenuSelector' onclick = 'exportJPG()'>export jpeg</div>
-	</div>
-<div id = 'centerHolder'>
-
-	<div id = 'rightBar'>
-	<!-- Color Selection Canvas -->
-		<canvas id="colorCanvas" oncontextmenu="return false"  width = '50' height = '300' style= "border:2px solid black"></canvas>
-
-		<!-- Current Colors Selected Canvas -->
-		<canvas id="currentColors" oncontextmenu="return false"  width = '25' height = '50' style= "border:2px solid black"></canvas>
-		<div id = 'pixelSizeHolder'>
-			
-			<div id = 'pixelSizeTitle'>pixel size</div>
-			<div id = 'pixelSize'></div>
-			<span id = 'uiMinus' onclick = 'decreasePixelSize()'></span>
-			<span id = 'uiPlus' onclick = 'increasePixelSize()'></span>
-			
-		</div>
-	</div>
-	<div id = 'leftBar'>
-		<!-- <div id="toolBar" oncontextmenu="return false">
-			<div id = 'pencilIcon' class = 'toolIcon'></div>
-			<div id = 'lineIcon' class = 'toolIcon'></div>
-			<div id = 'fillIcon' class = 'toolIcon'></div>
-		</div> -->
-	</div>
-	<div id = 'sizeDropMenu' class = 'dropMenu'>
-		<div id = 'eraseCanvas' class = 'dropMenuSelector'  onclick = 'eraseCanvas()'>erase canvas</div>
-		<span id = 'gridToggleHolder' class = 'dropMenuSelector' >
-			<span>show grid</span>
-			<input id = 'toggleGrid' type=checkbox name="gridBox" onchange="toggleGrid()" checked = 'yes'>
-		</span>
+		<span id = "dropMenuColorPreview" class = "colorPreview" onclick = "changeColorFromCustomPreview(1)" oncontextmenu = "return false"></span>
+		<span id = "colorHexValue" class = "colorSliderValue">#000000</span>
 	</div>	
-
-	<div id = 'pixelDropMenu' class = 'dropMenu'>
-		<div id = '2Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(2)'>2</div>
-		<div id = '4Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(4)'>4</div>
-		<div id = '8Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(8)'>8</div>
-		<div id = '16Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(16)'>16</div>
-		<div id = '32Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(32)'>32</div>
-		<div id = '64Pixel' class = 'dropMenuSelector'  onclick = "drawGrid(64)">64</div>
-		<div id = '128Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(128)'>128</div>
-	</div>
-
 
 
 	<!-- Drawing Canvas -->

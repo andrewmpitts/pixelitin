@@ -15,13 +15,18 @@ a:link{
 	color: white;
 }
 
+a:visited{
+	text-decoration: none;
+	color: white;
+}
+
 #centerHolder {
 	position: relative;
 	top: 25px;
 	width: 1400px;
 	height: 820px;
 	padding: 25px;
-	background-color: #962D3E;
+	background-color: #046380;
 	margin: auto;
 }
 
@@ -87,7 +92,7 @@ h1 {
 	border: 1px solid black;
 	padding: 2px;
 	color: black;
-	z-index: 10;
+	z-index: 4;
 }
 
 #sizeDropMenu {
@@ -104,17 +109,21 @@ h1 {
 
 #exportDropMenu {
 	position: absolute;
-	left: 215px;
+	left: 62px;
+	top: 175px;
 	display: none;
 }
 
 #colorDropMenu {
 	position: absolute;
-	left: 272px;
-	width: 240px;
-	height: 90px;
+	top: 440px;
+	left: 1150px;
+	width: 200px;
+	height: 150px;
 	padding: 5px;
 	display: none;
+	background-color: none;
+
 }
 
 /*Drop Menu Selectors*/
@@ -125,14 +134,11 @@ h1 {
 
 #toggleGrid {
 	position: relative;
-	top: 3px;
+	top: -8px;
+	left: 15px;
 }
 
 /*Tool Bar*/
-
-
-
-
 
 #leftBar {
 	position: relative;
@@ -233,12 +239,14 @@ h1 {
 	display: none;
 	opacity: 0.05;
 	margin: auto;
-	margin-top: -763px;
+	margin-top: -764px;
 	z-index: 2;
 	-webkit-user-select: none;     
     -moz-user-select: none;
 }
 
+
+/*shapes*/
 .arrow-right {
 	top: 2px;
 	width: 0; 
@@ -282,23 +290,20 @@ h1 {
 }
 
 #dropMenuColorPreview {
-	position: relative;
-	left: 175px;
-	top: -70px;
+	position: absolute;
+	left: 25px;
+	top: 95px;
 	width: 50px;
 	height: 50px;
-	/*float: right;*/
-
 	background-color: black;
 	border: 1px black solid;
-	/*margin: 0 auto;*/
 }
 
 #uiPlus {
 	/*color: gray;*/
 	position: relative;
 	font-size: 2em;
-	/*left: -3px;*/
+	left: 5px;
 	
 }
 
@@ -326,4 +331,34 @@ h1 {
 #pixelSize {
 	font-size: 1.5em;
 	text-align: center;
+}
+
+#leftOptionHolder {
+	position: absolute;
+	top: 25px;
+	left: -10px;
+}
+
+#customColorHolder {
+	position: relative;
+	width: 0px;
+	left: -200px;
+	text-align: center;
+}
+
+#customColorMenu {
+
+}
+
+#colorMenuToggle {
+	position: relative;
+	left: -27px;
+	top: 65px;
+	text-align: center;
+}
+
+#colorHexValue {
+	position: absolute;
+	left: 100px;
+	top: 110px;
 }

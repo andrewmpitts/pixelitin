@@ -16,11 +16,11 @@ var gridCanvas = document.getElementById("pixelitgrid");
 var dropMenuActive = false;
 var pixelSizes = [2, 4, 8, 16, 32, 64, 128];
 var colorList = [
-    ['white', 'black', 'blue', 'red', 'yellow', 'orange', '#8C20CC', '#CC924A', 'Chartreuse', 'DarkGreen', 'DeepPink', 'green'],
+    ['#ED693E', '#F2EBC7', 'blue', 'red', 'yellow', 'orange', '#8C20CC', '#CC924A', 'Chartreuse', 'DarkGreen', 'DeepPink', 'green'],
     ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#FFFFFF', '#FFFFFF']
 ];
 
-var menus = ['sizeDropMenu','pixelDropMenu', 'exportDropMenu', 'colorDropMenu'];
+var menus = ['exportDropMenu', 'colorDropMenu'];
 var pixelSizeSelectorIdList = [2,4,8,16,32,64,128];
 var hexValues = ['A','B','C','D','E','F']
 var colorPreview = [0,0,0];
@@ -46,13 +46,13 @@ function showColorPreviewValue(newValue, id) {
         if (id == 'blueValue') {
             colorPreview[2] = newValue;
         }
-        console.log(newValue);
+        console.log(decToHex(newValue));
         document.getElementById(id).innerHTML = decToHex(newValue);
         updateColorPreview(colorPreview);
     }
 
 function updateColorPreview(RGBColor) {
-
+    document.getElementById("colorHexValue").innerHTML = "#" + decToHex(RGBColor[0]) + decToHex(RGBColor[1]) + decToHex(RGBColor[2]);
     document.getElementById("dropMenuColorPreview").style.backgroundColor = "#" + decToHex(RGBColor[0]) + decToHex(RGBColor[1]) + decToHex(RGBColor[2]);
 }
 
