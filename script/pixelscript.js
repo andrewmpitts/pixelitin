@@ -14,16 +14,10 @@ var grid = true;
 var canvas = document.getElementById("pixelit");
 var gridCanvas = document.getElementById("pixelitgrid");
 var dropMenuActive = false;
+var pixelSizes = [2, 4, 8, 16, 32, 64, 128];
 var colorList = [
     ['white', 'black', 'blue', 'red', 'yellow', 'orange', '#8C20CC', '#CC924A', 'Chartreuse', 'DarkGreen', 'DeepPink', 'green'],
-    ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#FFFFFF', '#FFFFFF'],
-    ['#0A0500', '#140A00', '#1F0F00', '#291400', '#331A00', '#3D1F00', '#472400', '#522900', '#5C2E00', '#663300', '#754719', '#855C33'],
-    ['#1A0000', '#330000', '#4C0000', '#660000', '#800000', '#990000', '#B20000', '#CC0000', '#E60000', '#FF0000', '#FF1919', '#FF3333'],
-    ['#00001A', '#000033', '#00004C', '#000066', '#000080', '#000099', '#0000B2', '#0000CC', '#0000E6', '#0000FF', '#1919FF', '#3333FF'],
-    ['#001F00', '#002E00', '#003D00', '#004C00', '#005C00', '#006B00', '#007A00', '#008A00', '#009900', '#19A319', '#33AD33', '#4DB84D'],
-    ['#333300', '#4C4C00', '#666600', '#808000', '#999900', '#B2B200', '#CCCC00', '#E6E600', '#FFFF00', '#FFFF19', '#FFFF33', '#FFFF4D'],
-    ['#331400', '#4C1F00', '#662900', '#803300', '#993D00', '#B24700', '#CC5200', '#E65C00', '#FF6600', '#FF7519', '#FF8533', '#FF944D'],
-    ['#140014', '#290029', '#3D003D', '#520052', '#660066', '#7A007A', '#8F008F', '#A300A3', '#B800B8', '#CC00CC', '#D119D1', '#D633D6']
+    ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#FFFFFF', '#FFFFFF']
 ];
 
 var menus = ['sizeDropMenu','pixelDropMenu', 'exportDropMenu', 'colorDropMenu'];
@@ -171,7 +165,26 @@ function changeCanvasSizePercent(widthPercent, heightPercent) {
 function pixelSizeChange(size) {
     pixelSize = size;
     highlightPixelSize();
+    document.getElementById('pixelSize').innerHTML = pixelSize;
     drawGrid(pixelSize);
+}
+
+function increasePixelSize() {
+    if (pixelSize == 128) {
+        return
+    }
+    else {
+        pixelSizeChange(pixelSizes[pixelSizes.indexOf(pixelSize) + 1])
+    }
+}
+
+function decreasePixelSize(currentSize) {
+    if (pixelSize == 2) {
+        return
+    }
+    else {
+        pixelSizeChange(pixelSizes[pixelSizes.indexOf(pixelSize) - 1])
+    }
 }
 
 function exportPNG() {
@@ -201,6 +214,14 @@ function getMousePos(canvas, evt) {
         };
     }
 
+function drawLine(coords1, coords2) {
+    context.beginPath();
+    context.moveTo(coords1[0],coords1[1]);
+    context.lineTo(coords2[0],coords2[1]);
+    context.closePath();
+    context.stroke();
+}
+
 function domLoaded(size) {
     canvas = document.getElementById("pixelit");
     context = canvas.getContext("2d");
@@ -213,25 +234,33 @@ function domLoaded(size) {
 	var mouseDown = 0;
     pixelSize = size
     var blockSize = 25;
-    for (yCount = 0; yCount < 12; yCount++) {
-        for (xCount = 0; xCount < 9; xCount++) {
-            colorContext.fillStyle = colorList[xCount][yCount];
-            colorContext.fillRect(xCount * 25, yCount * 25, blockSize, blockSize);
-        }
-    }
-    canvas.height = browserHeight * .90;
-    canvas.width = browserWidth * .90;
 
-    gridCanvas.height = browserHeight * .90;
-    gridCanvas.width = browserWidth * .90;
+    canvas.width = 1280;
+    canvas.height = 760;
+
+    gridCanvas.width = 1280;
+    gridCanvas.height = 760;
+    
+    document.getElementById('pixelSize').innerHTML = pixelSize;
+    document.getElementById('uiMinus').innerHTML = '-';
+    document.getElementById('uiPlus').innerHTML = '+';
+
     drawGrid(pixelSize);
 
     
-	
     currentColorContext.fillRect(0, 0, blockSize, blockSize);
     currentColorContext.fillStyle = paintColor2;
     currentColorContext.fillRect(0, 25, blockSize, blockSize);
     currentColorContext.fillStyle = paintColor;
+
+    for (yCount = 0; yCount < 12; yCount++) {
+        for (xCount = 0; xCount < 2; xCount++) {
+            colorContext.fillStyle = colorList[xCount][yCount];
+            colorContext.fillRect(xCount * 25, yCount * 25, blockSize, blockSize);
+        }
+    }
+
+
 	
     colorCanvas.addEventListener('click', function (evt) {
         var mousePos = getMousePos(colorCanvas, evt);
@@ -297,7 +326,7 @@ function domLoaded(size) {
 			}
 		}
     }, false);
-
+    // drawLine([25,25],[100,100]);
     document.getElementById('pixelit').style.display = 'block';
     document.getElementById('pixelitgrid').style.display = 'block';
 }

@@ -1,27 +1,57 @@
 body {
 	position: absolute;
     width: 100%;
-    height: 100%;
-    display: block;
+    /*height: 850px;*/
     margin: auto;
     font-family: helvetica;
+    color: white;
+    background-color: #F2EBC7;
 	-webkit-user-select: none;     
     -moz-user-select: none;
 }
 
+a:link{
+	text-decoration: none;
+	color: white;
+}
+
+#centerHolder {
+	position: relative;
+	top: 25px;
+	width: 1400px;
+	height: 820px;
+	padding: 25px;
+	background-color: #962D3E;
+	margin: auto;
+}
+
+#canvasHolder {
+	position: absolute;
+	top: 25px;
+	/*margin: auto;*/
+	/*background-color: green;*/
+
+}
+
+#topBarBackground{
+	position: fixed;
+	width: 100%;
+	z-index: -1;
+}
+
 /*Top Bar*/
 .topBar{
-	position: fixed;
+	position: relative;
 	top: 0px;
 	left: 0px;
-	/* right: 50px; */
-	width: 100%;
+	width: 1380px;
 	height: 20px;
-	background-color: #3375CC;
-	margin: auto;
+	background-color: #348899;
 	padding: 10px;
-	display: inline;
+	display: block;
 	color: white;
+	margin: 0 auto;
+	/*text-align: center;*/
 }
 
 h1 {
@@ -57,29 +87,29 @@ h1 {
 	border: 1px solid black;
 	padding: 2px;
 	color: black;
-	z-index: 3;
+	z-index: 10;
 }
 
 #sizeDropMenu {
-	position: relative;
+	position: absolute;
 	display: none;
 	left: 110px;
 }
 
 #pixelDropMenu{
-	position: relative;
+	position: absolute;
 	display: none;
 	left: 168px;
 }
 
 #exportDropMenu {
-	position: relative;
+	position: absolute;
 	left: 215px;
 	display: none;
 }
 
 #colorDropMenu {
-	position: relative;
+	position: absolute;
 	left: 272px;
 	width: 240px;
 	height: 90px;
@@ -100,12 +130,53 @@ h1 {
 
 /*Tool Bar*/
 
-#toolBar {
+
+
+
+
+#leftBar {
+	position: relative;
+}
+
+/*Right Bar*/
+#rightBar {
+	position: absolute;
+	top: 65px;
+	right: -28px;
+	height: 765px;
+	z-index: 3;
+	/*background-color: green;*/
+}
+
+#colorCanvas{
+	position: relative;
+	/* top: 100px; */
+	left: -9px;
+	z-index: 2;
+}
+
+#currentColors{
+	position: relative;
+	z-index: 2;
+	top: 60px;
+	right: 55px;
+
+}
+
+.rightMenuContainer{
 	position: fixed;
+	top: 500px;
+	left: 0px;
+}
+
+/*Left Bar*/
+
+#toolBar {
+	position: absolute;
 	left: 10px;
-	top: 50px;
+	top: 35px;
 	width: 25px;
-	height: 75px;
+	height: 78px;
 	border: 2px solid black;
 
 }
@@ -118,31 +189,6 @@ h1 {
 	width: 25px;
 	border: 1px solid black;
 }
-
-/*Color Picker*/
-
-#colorCanvas{
-	position: fixed;
-	top: 50px;
-	right: 10px;
-	/* top: 100px; */
-	z-index: 2;
-}
-
-#currentColors{
-	position: fixed;
-	top: 360px;
-	right: 10px;
-	z-index: 2;
-}
-
-
-.rightMenuContainer{
-	position: fixed;
-	top: 500px;
-	left: 0px;
-}
-
 
 #sizeMenuDropdownButton{
 	left: 75px;
@@ -170,28 +216,24 @@ h1 {
 
 /*Pixelit.in Canvas*/
 #pixelit{
-	position: absolute;
-	left: 25px;
-	right: 25px;
-	top: 50px;
+	position: relative;
+	top: 25px;
 	display: none;
 	margin: 0 auto;
+	z-index: 1;
 	background-color: white;
-	/*width: 85%;
-	height: 50%;*/
 	-webkit-user-select: none;     
     -moz-user-select: none;
     
 }
 
 #pixelitgrid{
-	position: absolute;
-	top: 50px;
-	left: 25px;
-	right: 25px;
+	position: relative;
+	top: 25px;
 	display: none;
 	opacity: 0.05;
-	margin: 0 auto;
+	margin: auto;
+	margin-top: -763px;
 	z-index: 2;
 	-webkit-user-select: none;     
     -moz-user-select: none;
@@ -203,7 +245,7 @@ h1 {
 	height: 0; 
 	border-top: 8px solid transparent;
 	border-bottom: 8px solid transparent;
-	border-left: 8px solid white;
+	border-left: 8px solid blue;
 	display: inline-block;
 }
 
@@ -213,7 +255,7 @@ h1 {
 	height: 0; 
 	border-top: 8px solid transparent;
 	border-bottom: 8px solid transparent; 
-	border-right: 8px solid white; 
+	border-right: 8px solid blue; 
 	display: inline-block;
 }
 
@@ -228,8 +270,9 @@ h1 {
 #createdBy {
 	position: relative;
 	left: 40%;
+	top: -10px;
 	margin: 0 auto;
-	color: gray;
+	color: white;
 	z-index: 1;
 }
 
@@ -249,4 +292,38 @@ h1 {
 	background-color: black;
 	border: 1px black solid;
 	/*margin: 0 auto;*/
+}
+
+#uiPlus {
+	/*color: gray;*/
+	position: relative;
+	font-size: 2em;
+	/*left: -3px;*/
+	
+}
+
+#uiMinus {
+	/*color: gray;*/
+	position: relative;
+	font-size: 2em;
+	top: -2px;
+}
+
+#pixelSizeHolder {
+	position: relative;
+	color: white;
+	width: 50px;
+	top: 75px;
+	left: -28px;
+	text-align: center;
+	/*float: left;*/
+	margin: auto;
+	/*background-color: red;*/
+	/*font-size: 1.5em;*/
+	/*padding: 10px;*/
+}
+
+#pixelSize {
+	font-size: 1.5em;
+	text-align: center;
 }
