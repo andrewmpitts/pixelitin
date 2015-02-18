@@ -21,7 +21,7 @@
                 <canvas id="currentColors" oncontextmenu="return false" width='25' height='50' style="border:2px solid black"></canvas>
                 <div id="colorMenuToggle" class='dropMenuSelector' onclick='toggleDropMenu("colorDropMenu")'>custom</br>color</div>
                 <div id='pixelSizeHolder'>
-                    <div id='pixelSizeTitle'>pixel size</div>
+                    <div id='pixelSizeTitle'>brush size</div>
                     <div id='pixelSize'></div>	<span id='uiMinus' onclick='decreasePixelSize()'></span>
 	<span id='uiPlus' onclick='increasePixelSize()'></span>
 
@@ -59,7 +59,7 @@
                 </div>
                 </br>
                 <!-- click the box below to use the color -->	<span id="dropMenuColorPreview" class="colorPreview" onclick="changeColorFromCustomPreview(1)" oncontextmenu="return false"></span>
-	<span id="colorHexValue" class="colorSliderValue">#000000</span>
+        <span id="colorHexValue" class="colorSliderValue">(0, 0, 0)</span>
 
             </div>
             <!-- Drawing Canvas -->
@@ -74,7 +74,6 @@
 
        </div>
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="script/pixelscript.js"></script>
     </body>
 

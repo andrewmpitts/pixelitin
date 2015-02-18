@@ -1,8 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-    domLoaded(pixelSize)
-}, false);
-// var browserWidth = $(window).width();
-// var browserHeight = $(window).height();
+
 var width = 1280;
 var height = 720;
 var pixelSize = 8;
@@ -11,17 +7,15 @@ var yRes = height / pixelSize;
 var paintColor = 'black';
 var paintColor2 = 'white';
 var grid = true;
-var canvas = document.getElementById("pixelit");
-var gridCanvas = document.getElementById("pixelitgrid");
 var dropMenuActive = false;
 var pixelSizes = [2, 4, 8, 16, 32, 64, 128];
 var colorList = [
     ['#ED693E', '#F2EBC7', 'blue', 'red', 'yellow', 'orange', '#8C20CC', '#CC924A', 'Chartreuse', 'DarkGreen', 'DeepPink', 'green'],
-    ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#FFFFFF', '#FFFFFF']
+    ['#000000', '#1A1A1A', '#333333', '#4C4C4C', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E6E6E6', '#EEEEEE', '#FFFFFF']
 ];
-
 var menus = ['colorDropMenu'];
 var pixelSizeSelectorIdList = [2, 4, 8, 16, 32, 64, 128];
+var pixelSizeIndex = 2;
 var hexValues = ['A', 'B', 'C', 'D', 'E', 'F']
 var colorPreview = [0, 0, 0];
 
@@ -45,14 +39,12 @@ function showColorPreviewValue(newValue, id) {
     if (id == 'blueValue') {
         colorPreview[2] = newValue;
     }
-    console.log(decToHex(newValue));
-    // document.getElementById(id).innerHTML = decToHex(newValue);
     updateColorPreview(colorPreview);
 }
 
 function updateColorPreview(RGBColor) {
-    document.getElementById("colorHexValue").innerHTML = "#" + decToHex(RGBColor[0]) + decToHex(RGBColor[1]) + decToHex(RGBColor[2]);
-    document.getElementById("dropMenuColorPreview").style.backgroundColor = "#" + decToHex(RGBColor[0]) + decToHex(RGBColor[1]) + decToHex(RGBColor[2]);
+    document.getElementById("colorHexValue").innerHTML = "(" + RGBColor[0] + "," + RGBColor[1] + "," + RGBColor[2] + ")";
+    document.getElementById("dropMenuColorPreview").style.backgroundColor = "rgb(" + RGBColor[0] + "," + RGBColor[1] + "," + RGBColor[2] + ")";
 }
 
 function toggleDropMenu(selectedMenu) {
@@ -68,21 +60,6 @@ function toggleDropMenu(selectedMenu) {
         document.getElementById(selectedMenu).style.display = "none";
         dropMenuActive = false;
     }
-}
-
-function decToHex(decimal) {
-    // I'm a damn English major, okay?
-    remainder = decimal % 16;
-    denominator = Math.floor(decimal / 16)
-    valuesToHex = [denominator, remainder];
-    for (value in valuesToHex) {
-        if (valuesToHex[value] > 9) {
-            if (valuesToHex[value] < 17) {
-                valuesToHex[value] = hexValues[valuesToHex[value] - 10];
-            }
-        }
-    }
-    return valuesToHex.join('');
 }
 
 function changeColor(evt) {
@@ -124,7 +101,7 @@ function removeGrid() {
 }
 
 function toggleGrid() {
-    if (grid === true) {
+    if (grid == true) {
         removeGrid();
         grid = false;
     } else {
@@ -152,8 +129,6 @@ function changeCanvasSizePercent(widthPercent, heightPercent) {
         canvas.height = browserHeight * heightPercent;
         gridCanvas.width = browserWidth * widthPercent;
         gridCanvas.height = browserHeight * heightPercent;
-        // width = width;
-        // height = height;
         drawGrid(pixelSize);
     } else {
         return
@@ -196,7 +171,7 @@ function exportJPG() {
 function eraseCanvas() {
     if (confirm("Are you sure you want to erase the canvas?")) {
         context.fillStyle = 'white';
-        context.fillRect(0, 0, 10000, 10000);
+        context.fillRect(0, 0, width, height);
     } else {
         return
     }
@@ -211,6 +186,7 @@ function getMousePos(canvas, evt) {
 }
 
 function drawLine(coords1, coords2) {
+    //Not implemented currently
     context.beginPath();
     context.moveTo(coords1[0], coords1[1]);
     context.lineTo(coords2[0], coords2[1]);
@@ -227,6 +203,7 @@ function domLoaded(size) {
     var gridContext = gridCanvas.getContext("2d");
     var currentColorCanvas = document.getElementById("currentColors");
     var currentColorContext = currentColorCanvas.getContext("2d");
+    
     var mouseDown = 0;
     pixelSize = size
     var blockSize = 25;
@@ -322,7 +299,11 @@ function domLoaded(size) {
             }
         }
     }, false);
-    // drawLine([25,25],[100,100]);
+
     document.getElementById('pixelit').style.display = 'block';
     document.getElementById('pixelitgrid').style.display = 'block';
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    domLoaded(pixelSize)
+}, false);
