@@ -1,369 +1,318 @@
 body {
-	position: absolute;
+    position: absolute;
     width: 100%;
     /*height: 850px;*/
     margin: auto;
     font-family: helvetica;
     color: #F2EEE2;
     background-color: white;
-	-webkit-user-select: none;     
+    -webkit-user-select: none;
     -moz-user-select: none;
 }
-
-a:link{
-	text-decoration: none;
-	color: white;
+a:link {
+    text-decoration: none;
+    color: white;
 }
-
-a:visited{
-	text-decoration: none;
-	color: white;
+a:visited {
+    text-decoration: none;
+    color: white;
 }
-
 #centerHolder {
-	position: relative;
-	/*top: 25px;*/
-	width: 1400px;
-	height: 820px;
-	padding: 20px;
-	background-color: #3DAAD9;
-	margin: auto;
+    position: relative;
+    /*top: 25px;*/
+    width: 1400px;
+    height: 780px;
+    /*padding: 20px;*/
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: -50px;
+    background-color: #3DAAD9;
+    margin: auto;
 }
-
 #canvasHolder {
-	position: absolute;
-	top: 25px;
-	/*margin: auto;*/
-	/*background-color: green;*/
-
+    position: absolute;
+    top: 25px;
+    /*margin: auto;*/
+    /*background-color: green;*/
 }
-
-#topBarBackground{
-	position: fixed;
-	width: 100%;
-	z-index: -1;
+#topBarBackground {
+    position: fixed;
+    width: 100%;
+    z-index: -1;
 }
-
 /*Top Bar*/
-.topBar{
-	position: relative;
-	top: 0px;
-	left: 0px;
-	width: 1380px;
-	height: 20px;
-	background-color: #A2A3A8;
-	padding: 10px;
-	display: block;
-	color: white;
-	margin: 0 auto;
-	/*text-align: center;*/
+ .topBar {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 1380px;
+    height: 20px;
+    background-color: #A2A3A8;
+    padding: 10px;
+    display: block;
+    color: white;
+    margin: 0 auto;
+    /*text-align: center;*/
 }
-
 h1 {
-	position: absolute;
-	color: white;
-	top: 6px;
-	width: 100%;
-	text-align: center;
-	/*margin: auto;*/
-	font-family: helvetica;
-	font-size: 1em;
-	/*padding: 1px;*/
-	display: inline-block;
+    position: absolute;
+    color: white;
+    top: 4px;
+    width: 100%;
+    text-align: center;
+    /*margin: auto;*/
+    font-family: helvetica;
+    font-size: 1em;
+    /*padding: 1px;*/
+    display: inline-block;
 }
-
 #menuSelectorHolder {
-	position: relative;
-	padding: 1px;
-	top: -10px;
-	left: 25px;
+    position: relative;
+    padding: 1px;
+    top: -10px;
+    left: 25px;
 }
-
 .menuSelector {
-	padding-right: 5px;
-	cursor: pointer;
+    padding-right: 5px;
+    cursor: pointer;
 }
-
-
 /*Drop Menus*/
-.dropMenu {
-	position: relative;
-	top: 39px;
-	background-color: white;
-	text-align: left;
-	border: 1px solid black;
-	padding: 2px;
-	color: black;
-	z-index: 4;
+ .dropMenu {
+    position: relative;
+    top: 39px;
+    background-color: white;
+    text-align: left;
+    border: 1px solid black;
+    padding: 2px;
+    color: black;
+    z-index: 4;
 }
-
 #sizeDropMenu {
-	position: absolute;
-	display: none;
-	left: 110px;
+    position: absolute;
+    display: none;
+    left: 110px;
 }
-
-#pixelDropMenu{
-	position: absolute;
-	display: none;
-	left: 168px;
+#pixelDropMenu {
+    position: absolute;
+    display: none;
+    left: 168px;
 }
-
 #exportDropMenu {
-	position: absolute;
-	left: 88px;
-	top: 115px;
-	display: none;
+    position: absolute;
+    left: 88px;
+    top: 115px;
+    display: none;
 }
-
 #colorDropMenu {
-	position: absolute;
-	top: 440px;
-	left: 1150px;
-	width: 200px;
-	height: 150px;
-	padding: 5px;
-	display: none;
-	background-color: none;
-
+    position: absolute;
+    top: 440px;
+    left: 1150px;
+    width: 200px;
+    height: 150px;
+    padding: 5px;
+    display: none;
+    background-color: none;
 }
-
 /*Drop Menu Selectors*/
-.dropMenuSelector {
-	cursor: pointer;
-	padding: 4px;
+ .dropMenuSelector {
+    cursor: pointer;
+    padding: 4px;
 }
-
 #toggleGrid {
-	position: relative;
-	top: -8px;
-	left: 12px;
+    position: relative;
+    top: -8px;
+    left: 12px;
 }
-
 /*Tool Bar*/
-
-#leftBar {
-	position: relative;
+ #leftBar {
+    position: relative;
 }
-
 /*Right Bar*/
-#rightBar {
-	position: absolute;
-	top: 65px;
-	right: -28px;
-	height: 765px;
-	z-index: 3;
-	/*background-color: green;*/
+ #rightBar {
+    position: absolute;
+    top: 65px;
+    right: -28px;
+    height: 765px;
+    z-index: 3;
+    /*background-color: green;*/
 }
-
-#colorCanvas{
-	position: relative;
-	/* top: 100px; */
-	left: -9px;
-	z-index: 2;
+#colorCanvas {
+    position: relative;
+    /* top: 100px; */
+    left: -9px;
+    z-index: 2;
 }
-
-#currentColors{
-	position: relative;
-	z-index: 2;
-	top: 60px;
-	right: 55px;
-
+#currentColors {
+    position: relative;
+    z-index: 2;
+    top: 60px;
+    right: 55px;
 }
-
-.rightMenuContainer{
-	position: fixed;
-	top: 500px;
-	left: 0px;
+.rightMenuContainer {
+    position: fixed;
+    top: 500px;
+    left: 0px;
 }
-
 /*Left Bar*/
-
-#toolBar {
-	position: absolute;
-	left: 10px;
-	top: 35px;
-	width: 25px;
-	height: 78px;
-	border: 2px solid black;
-
+ #toolBar {
+    position: absolute;
+    left: 10px;
+    top: 35px;
+    width: 25px;
+    height: 78px;
+    border: 2px solid black;
 }
-
 .toolIcon {
-	position: relative;
-	top: -1px;
-	left: -1px;
-	height: 25px;
-	width: 25px;
-	border: 1px solid black;
+    position: relative;
+    top: -1px;
+    left: -1px;
+    height: 25px;
+    width: 25px;
+    border: 1px solid black;
 }
-
-#sizeMenuDropdownButton{
-	left: 75px;
-	
+#sizeMenuDropdownButton {
+    left: 75px;
 }
-
-#promptHolder{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -200px;
-	margin-top: -200px;
-
+#promptHolder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
 }
-
-#sizePrompt{
-	position: relative;
-	width: 400px;
-	height: 400px;
-	margin: auto;
-	background-color: white;
-	border:1px solid black;
-	z-index: 4;
+#sizePrompt {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    background-color: white;
+    border:1px solid black;
+    z-index: 4;
 }
-
 /*Pixelit.in Canvas*/
-#pixelit{
-	position: relative;
-	top: 25px;
-	display: none;
-	margin: 0 auto;
-	z-index: 1;
-	background-color: white;
-	-webkit-user-select: none;     
-    -moz-user-select: none;
-    
-}
-
-#pixelitgrid{
-	position: relative;
-	top: 64px;
-	display: none;
-	opacity: 0.05;
-	margin: auto;
-	margin-top: -764px;
-	z-index: 2;
-	-webkit-user-select: none;     
+ #pixelit {
+    position: relative;
+    top: 25px;
+    display: none;
+    margin: 0 auto;
+    z-index: 1;
+    background-color: white;
+    -webkit-user-select: none;
     -moz-user-select: none;
 }
-
-
+#pixelitgrid {
+    position: relative;
+    top: 64px;
+    display: none;
+    opacity: 0.05;
+    margin: auto;
+    margin-top: -764px;
+    z-index: 2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
 /*shapes*/
-.arrow-right {
-	top: 2px;
-	width: 0; 
-	height: 0; 
-	border-top: 8px solid transparent;
-	border-bottom: 8px solid transparent;
-	border-left: 8px solid blue;
-	display: inline-block;
+ .arrow-right {
+    top: 2px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid blue;
+    display: inline-block;
 }
-
 .arrow-left {
-	top: 2px;
-	width: 0; 
-	height: 0; 
-	border-top: 8px solid transparent;
-	border-bottom: 8px solid transparent; 
-	border-right: 8px solid blue; 
-	display: inline-block;
+    top: 2px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid blue;
+    display: inline-block;
 }
-
 /*Bottom Info Bar*/
-.centeredHolder {
-	position: absolute;
-	bottom: 1%;
-	width: 100%;
-
+ .centeredHolder {
+    position: absolute;
+    bottom: 1%;
+    width: 100%;
 }
-
 #createdBy {
-	position: relative;
-	left: 40%;
-	top: -10px;
-	margin: 0 auto;
-	color: white;
-	z-index: 1;
+    position: relative;
+    left: 40%;
+    top: 2px;
+    margin: 0 auto;
+    color: white;
+    z-index: 1;
 }
-
 /*Color Preview*/
+
 /*.colorPreview {
 	positon: relative;
 }*/
-
-#dropMenuColorPreview {
-	position: absolute;
-	left: 25px;
-	top: 95px;
-	width: 50px;
-	height: 50px;
-	display: block;
-	background-color: black;
-	border: 1px black solid;
+ #dropMenuColorPreview {
+    position: absolute;
+    left: 25px;
+    top: 95px;
+    width: 50px;
+    height: 50px;
+    display: block;
+    background-color: black;
+    border: 1px black solid;
 }
-
 #uiPlus {
-	/*color: gray;*/
-	position: relative;
-	font-size: 2em;
-	left: 5px;
-	
+    /*color: gray;*/
+    position: relative;
+    font-size: 2em;
+    left: 5px;
 }
-
 #uiMinus {
-	/*color: gray;*/
-	position: relative;
-	font-size: 2em;
-	top: -2px;
+    /*color: gray;*/
+    position: relative;
+    font-size: 2em;
+    top: -2px;
 }
-
 #pixelSizeHolder {
-	position: relative;
-	color: white;
-	width: 50px;
-	top: 75px;
-	left: -28px;
-	text-align: center;
-	margin: auto;
+    position: relative;
+    color: white;
+    width: 50px;
+    top: 75px;
+    left: -28px;
+    text-align: center;
+    margin: auto;
 }
-
 #pixelSize {
-	font-size: 1.5em;
-	text-align: center;
+    font-size: 1.5em;
+    text-align: center;
 }
-
 #leftOptionHolder {
-	position: absolute;
-	top: 25px;
-	left: -7px;
+    position: absolute;
+    top: 25px;
+    left: -7px;
 }
-
 #customColorHolder {
-	position: relative;
-	width: 0px;
-	left: -200px;
-	text-align: center;
+    position: relative;
+    width: 0px;
+    left: -200px;
+    text-align: center;
 }
-
 #colorMenuToggle {
-	position: relative;
-	left: -27px;
-	top: 65px;
-	text-align: center;
+    position: relative;
+    left: -27px;
+    top: 65px;
+    text-align: center;
 }
-
 #colorHexValue {
-	position: absolute;
-	left: 100px;
-	top: 110px;
+    position: absolute;
+    left: 100px;
+    top: 110px;
 }
-
 #RGBHolder {
-	position: absolute;
-	top: 10px;
-	font-size: 1.1em;
-	left: 182px;
-	height: 75px;
-	width: 25px;
-	/*margin: 10px;*/
+    position: absolute;
+    top: 10px;
+    font-size: 1.1em;
+    left: 182px;
+    height: 75px;
+    width: 25px;
+    /*margin: 10px;*/
 }

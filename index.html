@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>pixelit.in</title>
-	<link rel="stylesheet" type="text/css" href="css/pixelit.css">
-	
-</head>
-<body>
-<!-- 	<div id = 'topBarBackground' class = 'topBar'></div>
+    
+    <head>
+        <title>pixelit.in</title>
+        <link rel="stylesheet" type="text/css" href="css/pixelit.css">
+    </head>
+    
+    <body>
+        <!-- <div id=' topBarBackground' class=' topBar'></div>
 	<div id = 'topBar' class = 'topBar'>
 	</div> -->
+        <div id='centerHolder'>
+            	<h1 id='title'>pixelit.in</h1>
 
-<div id = 'centerHolder'>
-	<h1 id = 'title'>pixelit.in</h1>
-	<div id = 'rightBar'>
-		<!-- Color Selection Canvas -->
-		<canvas id="colorCanvas" oncontextmenu="return false"  width = '50' height = '300' style= "border:2px solid black"></canvas>
+            <div id='rightBar'>
+                <!-- Color Selection Canvas -->
+                <canvas id="colorCanvas" oncontextmenu="return false" width='50' height='300' style="border:2px solid black"></canvas>
+                <!-- Current Colors Selected Canvas -->
+                <canvas id="currentColors" oncontextmenu="return false" width='25' height='50' style="border:2px solid black"></canvas>
+                <div id="colorMenuToggle" class='dropMenuSelector' onclick='toggleDropMenu("colorDropMenu")'>custom</br>color</div>
+                <div id='pixelSizeHolder'>
+                    <div id='pixelSizeTitle'>pixel size</div>
+                    <div id='pixelSize'></div>	<span id='uiMinus' onclick='decreasePixelSize()'></span>
+	<span id='uiPlus' onclick='increasePixelSize()'></span>
 
-		<!-- Current Colors Selected Canvas -->
-		<canvas id="currentColors" oncontextmenu="return false"  width = '25' height = '50' style= "border:2px solid black"></canvas>
-		<div id = "colorMenuToggle"  class = 'dropMenuSelector' onclick = 'toggleDropMenu("colorDropMenu")'>custom</br>color</div>
-
-		<div id = 'pixelSizeHolder'>
-			<div id = 'pixelSizeTitle'>pixel size</div>
-			<div id = 'pixelSize'></div>
-			<span id = 'uiMinus' onclick = 'decreasePixelSize()'></span>
-			<span id = 'uiPlus' onclick = 'increasePixelSize()'></span>
-		</div>
-	</div>
-
-	<div id = 'leftBar'>
-		<span id = 'leftOptionHolder'>
+                </div>
+            </div>
+            <div id='leftBar'>	<span id='leftOptionHolder'>
 			</br>
 			<button type = "button" id = 'eraseCanvas'  onclick = 'eraseCanvas()'>erase</button>
 			</br>
@@ -38,61 +35,46 @@
 			</br>
 			</br>
 			<span>show</br>grid</span>
-			<input id = 'toggleGrid' type=checkbox name="gridBox" onchange="toggleGrid()" checked = 'yes'>
-			</br>
-			</br>
-		</span>
-	</div>
 
-	<div id = 'pixelDropMenu' class = 'dropMenu'>
-		<div id = '2Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(2)'>2</div>
-		<div id = '4Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(4)'>4</div>
-		<div id = '8Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(8)'>8</div>
-		<div id = '16Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(16)'>16</div>
-		<div id = '32Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(32)'>32</div>
-		<div id = '64Pixel' class = 'dropMenuSelector'  onclick = "drawGrid(64)">64</div>
-		<div id = '128Pixel' class = 'dropMenuSelector'  onclick = 'drawGrid(128)'>128</div>
-	</div>
+                <input id='toggleGrid' type=checkbox name="gridBox" onchange="toggleGrid()" checked='yes'>
+                </br>
+                </br>
+                </span>
+            </div>
+            <div id='pixelDropMenu' class='dropMenu'>
+                <div id='2Pixel' class='dropMenuSelector' onclick='drawGrid(2)'>2</div>
+                <div id='4Pixel' class='dropMenuSelector' onclick='drawGrid(4)'>4</div>
+                <div id='8Pixel' class='dropMenuSelector' onclick='drawGrid(8)'>8</div>
+                <div id='16Pixel' class='dropMenuSelector' onclick='drawGrid(16)'>16</div>
+                <div id='32Pixel' class='dropMenuSelector' onclick='drawGrid(32)'>32</div>
+                <div id='64Pixel' class='dropMenuSelector' onclick="drawGrid(64)">64</div>
+                <div id='128Pixel' class='dropMenuSelector' onclick='drawGrid(128)'>128</div>
+            </div>
+            <div id='colorDropMenu' class='dropMenu'>
+                <input id="redSlider" class="colorSlider" type="range" min="0" max="255" value="0" onchange="showColorPreviewValue(this.value,'redValue')" />
+                <input id="greenSlider" class="colorSlider" type="range" min="0" max="255" value="0" onchange="showColorPreviewValue(this.value,'greenValue')" />
+                <input id="blueSlider" class="colorSlider" type="range" min="0" max="255" value="0" onchange="showColorPreviewValue(this.value,'blueValue')" />
+                <div id='RGBHolder'>R</br>G</br>B</br>
+                </div>
+                </br>
+                <!-- click the box below to use the color -->	<span id="dropMenuColorPreview" class="colorPreview" onclick="changeColorFromCustomPreview(1)" oncontextmenu="return false"></span>
+	<span id="colorHexValue" class="colorSliderValue">#000000</span>
 
-	<div id = 'colorDropMenu' class = 'dropMenu'>
-		
-			<input id = "redSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'redValue')"/>
-			
-			<input id = "greenSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0"onchange="showColorPreviewValue(this.value,'greenValue')"/>
-			
-			<input id = "blueSlider" class = "colorSlider" type="range"  min="0" max="255" value = "0" onchange="showColorPreviewValue(this.value,'blueValue')"/>
-		<div id = 'RGBHolder'>
-			R
-			</br>
-			G
-			</br>
-			B
-			</br>
-		</div>
-
-		</br><!-- click the box below to use the color -->
-		<span id = "dropMenuColorPreview" class = "colorPreview" onclick = "changeColorFromCustomPreview(1)" oncontextmenu = "return false"></span>
-		<span id = "colorHexValue" class = "colorSliderValue">#000000</span>
-	</div>	
-
-	<!-- Drawing Canvas -->
-	<div id 'canvasHolder'>
-		<canvas id="pixelit" style= "border:2px solid black"></canvas>
-
-		<!-- Drawing Grid Overlay -->
-		<canvas id="pixelitgrid" oncontextmenu="return false" style= "border:2px solid black"></canvas>
-	</div>
-
-	<div class = 'centeredHolder' id = 'bottomInfo'>
-		<span id = 'createdBy'>
+            </div>
+            <!-- Drawing Canvas -->
+            <div id 'canvasHolder'>
+                <canvas id="pixelit" style="border:2px solid black"></canvas>
+                <!-- Drawing Grid Overlay -->
+                <canvas id="pixelitgrid" oncontextmenu="return false" style="border:2px solid black"></canvas>
+            </div>
+            <div class='centeredHolder' id='bottomInfo'>	<span id='createdBy'>
 			created by Andrew Pitts | <a href="http://apitts.com">apitts.com</a>
 		</span>
-	</div>
 
-</div>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="script/pixelscript.js"></script>
-</body>
+       </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="script/pixelscript.js"></script>
+    </body>
 
 </html>
