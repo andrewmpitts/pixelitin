@@ -18,6 +18,7 @@ var pixelSizeSelectorIdList = [2, 4, 8, 16, 32, 64, 128];
 var pixelSizeIndex = 2;
 var hexValues = ['A', 'B', 'C', 'D', 'E', 'F']
 var colorPreview = [0, 0, 0];
+var centerHolderDiv = document.getElementById('centerHolder');
 
 function highlightPixelSize() {
     for (size in pixelSizeSelectorIdList) {
@@ -282,18 +283,21 @@ function domLoaded(size) {
         mouseDown = 0;
     }, false);
 
-    gridCanvas.addEventListener('mousemove', function (ev) {
-        var e = window.event
+    centerHolderDiv.addEventListener('mouseup', function (ev) {
+        mouseDown = 0;
+    }, false);
+
+    gridCanvas.addEventListener('mousemove', function (ev) { 
         context.fillStyle = paintColor;
         var mousePos = getMousePos(gridCanvas, ev);
         if (mouseDown == 1) {
             context.fillStyle = paintColor;
             context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
-            if (e.which == 1) {
+            if (ev.which == 1) {
                 context.fillStyle = paintColor;
                 context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
             }
-            if (e.which == 3) {
+            if (ev.which == 3) {
                 context.fillStyle = paintColor2;
                 context.fillRect(Math.ceil(mousePos.x / pixelSize) * pixelSize - pixelSize, Math.ceil(mousePos.y / pixelSize) * pixelSize - pixelSize, pixelSize, pixelSize);
             }
